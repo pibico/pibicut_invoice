@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include pibicut_invoice *.css
+recursive-include pibicut_invoice *.csv
+recursive-include pibicut_invoice *.html
+recursive-include pibicut_invoice *.ico
+recursive-include pibicut_invoice *.js
+recursive-include pibicut_invoice *.json
+recursive-include pibicut_invoice *.md
+recursive-include pibicut_invoice *.png
+recursive-include pibicut_invoice *.py
+recursive-include pibicut_invoice *.svg
+recursive-include pibicut_invoice *.txt
+recursive-exclude pibicut_invoice *.pyc
