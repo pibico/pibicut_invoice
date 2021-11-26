@@ -89,13 +89,19 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+  "Sales Invoice": {
+    "before_save": "pibicut_invoice.pibicut_invoice.custom.generate_tlv_qr"
+  },
+  "POS Invoice": {
+    "before_save": "pibicut_invoice.pibicut_invoice.custom.generate_tlv_qr"
+  }
+   #"*": {
+ 	#	"on_update": "method",
+ 	#	"on_cancel": "method",
+ 	#	"on_trash": "method"
+	#}
+}
 
 # Scheduled Tasks
 # ---------------
@@ -173,3 +179,4 @@ user_data_fields = [
 # 	"pibicut_invoice.auth.validate"
 # ]
 
+fixtures = ["Property Setter", {"doctype": "Custom Field", "filters": [ ["dt", "in", ("Sales Invoice", "Company", "POS Invoice")] ]}, {"doctype": "Client Script", "filters": [ ["dt", "in", ("Sales Invoice", "POS Invoice")] ]}, {"doctype": "Print Format", "filters": [ ["doc_type", "in", ("Sales Invoice", "POS Invoice")] ]}]

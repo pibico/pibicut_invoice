@@ -1,0 +1,28 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Sales Invoice",
+  "enabled": 1,
+  "modified": "2021-11-24 20:58:28.259805",
+  "name": "Sales Invoice-Form",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "// Copyright (c) 2021, PibiCo and contributors\n// For license information, please see license.txt\n\nfrappe.ui.form.on('Sales Invoice', {\n  refresh(frm) {\n    var template = '';\n    if (frm.doc.__islocal) {\n      template = '<img src=\"\" />';\n\t  frm.set_df_property('qr_preview', 'options', frappe.render_template(template));\n      frm.refresh_field('qr_preview');\n    } else {\n      if (frm.doc.qr_code) {\n        template = '<img src=\"' + frm.doc.qr_code + '\" width=\"240px\"/>';\n\t    frm.set_df_property('qr_preview', 'options', frappe.render_template(template));\n        frm.refresh_field('qr_preview');\n      }        \n    }\n  },\n  onload(frm) {\n    var template = '';\n    if (frm.doc.__islocal) {\n      template = '<img src=\"\" />';\n\t  frm.set_df_property('qr_preview', 'options', frappe.render_template(template));\n      frm.refresh_field('qr_preview');\n    } else {\n      if (frm.doc.qr_code) {\n        template = '<img src=\"' + frm.doc.qr_code + '\" width=\"240px\"/>';\n\t    frm.set_df_property('qr_preview', 'options', frappe.render_template(template));\n        frm.refresh_field('qr_preview');\n      }    \n    }\n  }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "POS Invoice",
+  "enabled": 1,
+  "modified": "2021-11-25 08:23:30.392695",
+  "name": "POS Invoice-Form",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "// Copyright (c) 2021, PibiCo and contributors\n// For license information, please see license.txt\n\nfrappe.ui.form.on('POS Invoice', {\n  refresh(frm) {\n    var template = '';\n    if (frm.doc.__islocal) {\n      template = '<img src=\"\" />';\n\t  frm.set_df_property('qr_preview', 'options', frappe.render_template(template));\n      frm.refresh_field('qr_preview');\n    } else {\n      if (frm.doc.qr_code) {\n        template = '<img src=\"' + frm.doc.qr_code + '\" width=\"240px\"/>';\n\t    frm.set_df_property('qr_preview', 'options', frappe.render_template(template));\n        frm.refresh_field('qr_preview');\n      }        \n    }\n  },\n  onload(frm) {\n    var template = '';\n    if (frm.doc.__islocal) {\n      template = '<img src=\"\" />';\n\t  frm.set_df_property('qr_preview', 'options', frappe.render_template(template));\n      frm.refresh_field('qr_preview');\n    } else {\n      if (frm.doc.qr_code) {\n        template = '<img src=\"' + frm.doc.qr_code + '\" width=\"240px\"/>';\n\t    frm.set_df_property('qr_preview', 'options', frappe.render_template(template));\n        frm.refresh_field('qr_preview');\n      }    \n    }\n  }\n});\n",
+  "view": "Form"
+ }
+]
