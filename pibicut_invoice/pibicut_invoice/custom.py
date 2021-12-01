@@ -32,12 +32,15 @@ def get_qrCode(input_data, doc):
     embedded = os.path.join(path, "sites", site_name, 'public', logo[1:])
     img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(), eye_drawer=SquareModuleDrawer(), embeded_image_path=embedded)
   else:
-    company_logo = frappe.get_value("Company", doc.company, "logo")
-    if company_logo:
-      embedded = os.path.join(path, "sites", site_name, 'public', company_logo[1:])
-      img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(), eye_drawer=SquareModuleDrawer(), embeded_image_path=embedded)
-    else:
-      img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(), eye_drawer=SquareModuleDrawer())
+    #company_logo = frappe.get_value("Company", doc.company, "logo")
+    #if company_logo:
+    #  embedded = os.path.join(path, "sites", site_name, 'public', company_logo[1:])
+    #  img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(), eye_drawer=SquareModuleDrawer(), embeded_image_path=embedded)
+    #else:
+    #  img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(), eye_drawer=SquareModuleDrawer())
+    
+    embedded = os.path.join(path, "apps", 'pibicut_invoice/pibicut_invoice/public/images/logo.png')
+    img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(), eye_drawer=SquareModuleDrawer(), embeded_image_path=embedded)
     
   #qr = qrcode.make(input_str)
   temp = BytesIO()
