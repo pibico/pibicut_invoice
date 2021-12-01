@@ -14,6 +14,7 @@ from PIL import Image
 import base64, os
 from io import BytesIO
 
+@frappe.whitelist()
 def get_qrCode(input_data, doc):
   qr = qrcode.QRCode(
         version=6,
@@ -57,6 +58,7 @@ def getTLVForValue(tagNum, tagValue):
   
   return "".join(tagList)
 
+@frappe.whitelist()
 def generate_tlv_qr(doc, method):
   ## Form xml for QRCode
   xml = """<QRCode>
