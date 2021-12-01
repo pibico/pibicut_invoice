@@ -14,7 +14,7 @@ from PIL import Image
 import base64, os
 from io import BytesIO
 
-def get_qrCode(input_data, logo):
+def get_qrCode(input_data, doc):
   qr = qrcode.QRCode(
         version=6,
         box_size=4,
@@ -28,11 +28,17 @@ def get_qrCode(input_data, logo):
     pos = site_name.find(":")
     site_name = site_name[:pos]
   
-  if logo:
+  if doc.logo:
     embedded = os.path.join(path, "sites", site_name, 'public', logo[1:])
     img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(), eye_drawer=SquareModuleDrawer(), embeded_image_path=embedded)
   else:
-    img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(), eye_drawer=SquareModuleDrawer())
+    company_logo = frappe.get_value("Company", doc.company, "logo")
+    if company_logo:
+      embedded = os.path.join(path, "sites", site_name, 'public', company_logo[1:])
+      img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(), eye_drawer=SquareModuleDrawer(), embeded_image_path=embedded)
+    else:
+      img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(), eye_drawer=SquareModuleDrawer())
+    
   #qr = qrcode.make(input_str)
   temp = BytesIO()
   img.save(temp, "PNG")
@@ -96,6 +102,6 @@ def generate_tlv_qr(doc, method):
   doc.base64_data = base64_data
   ## Generate and fill TLV QR Code image based on encoded string
   if base64_data:
-    doc.qr_code = get_qrCode(base64_data, doc.logo)
+    doc.qr_code = get_qrCode(base64_data, doc)
   else:
     doc.qr_code = None
