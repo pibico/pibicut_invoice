@@ -102,7 +102,7 @@ def generate_tlv_qr(doc, method):
   ## Encode hex bytearray from hex string
   base64_data = base64.b64encode(bytearray.fromhex(tlv_data))
   ## Function for generating TLV QR Code on Sales Invoice
-  doc.base64_data = base64_data
+  doc.base64_data = str(base64_data)
   ## Generate and fill TLV QR Code image based on encoded string
   if base64_data:
     doc.qr_code = get_qrCode(base64_data, doc)
