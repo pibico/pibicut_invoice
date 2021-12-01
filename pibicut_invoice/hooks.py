@@ -91,7 +91,8 @@ app_license = "MIT"
 
 doc_events = {
   "Sales Invoice": {
-    "before_save": "pibicut_invoice.pibicut_invoice.custom.generate_tlv_qr"
+    "before_save": "pibicut_invoice.pibicut_invoice.custom.generate_tlv_qr",
+    "before_submit": "pibicut_invoice.pibicut_invoice.custom.generate_tlv_qr"
   },
   "POS Invoice": {
     "before_save": "pibicut_invoice.pibicut_invoice.custom.generate_tlv_qr"
