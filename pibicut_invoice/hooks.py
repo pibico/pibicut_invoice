@@ -95,7 +95,8 @@ doc_events = {
     "after_submit": "pibicut_invoice.pibicut_invoice.custom.generate_tlv_qr"
   },
   "POS Invoice": {
-    "before_save": "pibicut_invoice.pibicut_invoice.custom.generate_tlv_qr"
+    "before_save": "pibicut_invoice.pibicut_invoice.custom.generate_tlv_qr",
+    "after_submit": "pibicut_invoice.pibicut_invoice.custom.generate_tlv_qr"
   }
    #"*": {
  	#	"on_update": "method",
