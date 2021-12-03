@@ -107,6 +107,6 @@ def generate_tlv_qr(doc, method):
   doc.base64_data = str(base64_data)
   ## Generate and fill TLV QR Code image based on encoded string
   if base64_data:
-    doc.qr_code = get_qrCode(base64_data, doc)
+    doc.qr_code_pibico = get_qrCode(base64_data, doc)
   else:
-    doc.qr_code = None
+    doc.qr_code_pibico = None
